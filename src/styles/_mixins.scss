@@ -1,10 +1,5 @@
-// ----------------------------------------------------------------------------
-// Reusable mixins
-// ----------------------------------------------------------------------------
-
 @use 'variables' as *;
 
-// Flex helper — cuts four lines down to one
 @mixin flex($dir: row, $align: stretch, $justify: flex-start, $gap: 0) {
   display: flex;
   flex-direction: $dir;
@@ -21,7 +16,6 @@
   justify-content: center;
 }
 
-// Card / surface treatment
 @mixin surface($padding: $space-md, $radius: $radius-lg, $shadow: $shadow-sm) {
   background: $color-bg-surface;
   border-radius: $radius;
@@ -29,35 +23,30 @@
   padding: $padding;
 }
 
-// Focus ring for all interactive controls
 @mixin focus-ring($color: $color-primary) {
   outline: none;
   border-color: $color;
   box-shadow: 0 0 0 3px rgba($color, 0.15);
 }
 
-// Single-line truncation
 @mixin truncate {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-// Responsive grid of auto-sized cells
 @mixin grid($min-width: $grid-card-min, $gap: $space-lg) {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax($min-width, 1fr));
   gap: $gap;
 }
 
-// Breakpoint mixin — `@include respond-to(mobile) { … }`
 @mixin respond-to($bp) {
   @if $bp == mobile       { @media (max-width: $bp-mobile)  { @content; } }
   @else if $bp == tablet  { @media (max-width: $bp-tablet)  { @content; } }
   @else if $bp == desktop { @media (max-width: $bp-desktop) { @content; } }
 }
 
-// Visually-hidden — keep accessible to screen readers, hide visually
 @mixin visually-hidden {
   position: absolute;
   width: 1px;
@@ -70,10 +59,6 @@
   border: 0;
 }
 
-// Compositor-optimized shimmer — animates transform on an ::after overlay
-// so the animation runs on the GPU compositor thread, NOT the main thread.
-// Unlike animating `background-position`, this adds zero main-thread paint
-// cost and therefore doesn't inflate TBT.
 @mixin shimmer(
   $base: $color-skeleton,
   $highlight: rgba(255, 255, 255, 0.7),
@@ -104,14 +89,12 @@
   to { transform: translate3d(100%, 0, 0); }
 }
 
-// Respect user motion preferences — stop shimmer for a11y
 @mixin respect-motion {
   @media (prefers-reduced-motion: reduce) {
     &::after { animation: none; }
   }
 }
 
-// Button reset
 @mixin button-reset {
   background: none;
   border: none;
@@ -121,7 +104,6 @@
   cursor: pointer;
 }
 
-// Outlined button
 @mixin button-outlined($color: $color-primary) {
   padding: $space-sm $space-xl;
   border: 1.5px solid $color;

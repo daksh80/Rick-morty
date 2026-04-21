@@ -1,11 +1,4 @@
-/**
- * Simple in-memory cache with TTL.
- *
- * Module-level singleton so cached entries survive component unmount/remount.
- * Entries are lazily evicted on read — no background timer needed.
- */
-
-const DEFAULT_TTL = 5 * 60 * 1000; // 5 minutes
+const DEFAULT_TTL = 5 * 60 * 1000;
 const store = new Map();
 
 export const cacheRead = (key) => {

@@ -1,10 +1,6 @@
 import { Component } from 'react';
 import styles from './ErrorBoundary.module.scss';
 
-/**
- * Catches render/lifecycle errors anywhere below it and shows a fallback UI.
- * Pair with `useErrorBoundary()` to surface async errors too.
- */
 class ErrorBoundary extends Component {
   constructor(props) {
     super(props);

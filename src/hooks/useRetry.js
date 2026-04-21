@@ -6,16 +6,6 @@ const createAbortError = () => {
   return error;
 };
 
-/**
- * Retry an async operation with exponential backoff.
- *
- * Useful for transient network failures — each failed attempt waits
- * `baseDelay × backoff^n` ms before retrying, up to `maxRetries` times.
- *
- * @example
- *   const { run, attempt, isRetrying } = useRetry({ maxRetries: 3 });
- *   const data = await run(() => fetch('/api/…').then(r => r.json()));
- */
 const useRetry = ({ maxRetries = 3, baseDelay = 500, backoff = 2 } = {}) => {
   const [attempt, setAttempt] = useState(0);
   const [isRetrying, setIsRetrying] = useState(false);

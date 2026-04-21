@@ -15,13 +15,6 @@ export const prefetchCharacters = ({ page, name, status }) =>
     fetcher: ({ signal }) => fetchCharacters({ page, name, status }, { signal }),
   });
 
-/**
- * Domain hook — fetches + caches a page of characters for the given filters.
- *
- * Composes:
- *   - useFetch : request + cache-by-key + cancellation
- *   - useRetry : transparent exponential-backoff retry on transient failures
- */
 const useCharacters = ({ page, name, status }) => {
   const key = getCharactersKey({ page, name, status });
   const { run: runWithRetry } = useRetry({ maxRetries: 2, baseDelay: 500 });

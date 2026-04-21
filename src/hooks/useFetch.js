@@ -29,18 +29,6 @@ export const prefetchResource = ({ key, fetcher, ttl }) => {
   });
 };
 
-/**
- * Generic data-fetching hook with caching and cancellation.
- *
- * @param {Object}   params
- * @param {string}   params.key       - unique cache key for this request
- * @param {Function} params.fetcher   - async function returning the data
- * @param {number}   [params.ttl]     - cache TTL in ms
- * @param {boolean}  [params.enabled] - if false, skip fetching
- *
- * Returns `{ data, loading, error, refetch }`. `refetch()` invalidates the
- * cache entry for `key` and forces a fresh network request.
- */
 const useFetch = ({ key, fetcher, ttl, enabled = true }) => {
   const [data, setData] = useState(() => cacheGet(key));
   const [loading, setLoading] = useState(() => enabled && cacheGet(key) === null);
@@ -101,9 +89,7 @@ const useFetch = ({ key, fetcher, ttl, enabled = true }) => {
       cancelled = true;
       controller.abort();
     };
-    // fetcher is intentionally omitted — callers should memoize or compose the key
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [key, refreshTick, enabled]);
+  }, [key, refreshTick, enabled, fetcher, ttl]);
 
   return { data, loading, error, refetch };
 };

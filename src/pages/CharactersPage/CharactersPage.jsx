@@ -17,9 +17,6 @@ const CharactersPage = () => {
   const [status, setStatus] = useState('');
 
   const debouncedName = useDebounce(nameInput, DEBOUNCE_DELAY);
-
-  // Reset to page 1 only when the debounced value actually changes (not on each
-  // keystroke); skip the initial mount so the first load isn't affected.
   const isFirstRender = useRef(true);
   useEffect(() => {
     if (isFirstRender.current) {

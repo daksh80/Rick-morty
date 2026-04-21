@@ -9,7 +9,7 @@ const buildUrl = (path, params) => {
 };
 
 const handleResponse = async (res) => {
-  if (res.status === 404) return null; // no results for these filters
+  if (res.status === 404) return null;
   if (!res.ok) {
     const err = new Error(`HTTP ${res.status} ${res.statusText}`);
     err.status = res.status;
@@ -23,12 +23,9 @@ export const fetchCharacters = async (
   { signal } = {}
 ) => {
   const isFirstPage = page === 1 && name === '' && status === '';
-
-  // Consume the HTML early-fetch for the default first-page load so the API
-  // call runs in parallel with the JS bundle download instead of after it.
   if (isFirstPage && typeof window !== 'undefined' && window.__rmPrefetch) {
     const data = await window.__rmPrefetch;
-    window.__rmPrefetch = null; // consume once
+    window.__rmPrefetch = null;
     if (data) return data;
   }
 
