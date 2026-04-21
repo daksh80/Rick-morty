@@ -1,0 +1,16 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.character-list {
+  @include grid($grid-card-min, $space-lg);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  &__empty {
+    text-align: center;
+    padding: 60px $space-lg;
+    color: $color-text-label;
+    font-size: $font-size-lg;
+  }
+}

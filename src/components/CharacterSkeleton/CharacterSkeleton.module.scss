@@ -1,0 +1,36 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.character-skeleton {
+  @include grid($grid-card-min, $space-lg);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  &__card {
+    background: $color-bg-surface;
+    border-radius: $radius-lg;
+    overflow: hidden;
+    box-shadow: $shadow-card;
+    border: 1px solid rgba(15, 23, 42, 0.04);
+  }
+
+  &__image {
+    width: 100%;
+    aspect-ratio: 1;
+    @include shimmer($duration: 1.1s);
+    @include respect-motion;
+  }
+
+  &__body {
+    @include flex($dir: column, $gap: $space-sm);
+    padding: 14px $space-md 18px;
+  }
+
+  &__line {
+    height: 12px;
+    border-radius: $radius-sm;
+    @include shimmer($duration: 1.3s);
+    @include respect-motion;
+  }
+}

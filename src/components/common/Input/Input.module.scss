@@ -1,0 +1,29 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.input-field {
+  @include flex($dir: column, $gap: $space-xs);
+
+  &__label {
+    font-size: $font-size-sm;
+    font-weight: 600;
+    color: #555;
+  }
+
+  &__control {
+    padding: $space-sm 12px;
+    border: 1.5px solid $color-border;
+    border-radius: $radius-md;
+    background: $color-bg-surface;
+    font-size: $font-size-base;
+    transition: border-color $transition-fast;
+
+    &:focus {
+      @include focus-ring;
+    }
+
+    &::placeholder {
+      color: #aaa;
+    }
+  }
+}

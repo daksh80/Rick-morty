@@ -1,0 +1,29 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.select-field {
+  @include flex($dir: column, $gap: $space-xs);
+
+  &__label {
+    font-size: $font-size-sm;
+    font-weight: 600;
+    color: #555;
+  }
+
+  &__control {
+    padding: $space-sm 32px $space-sm 12px;
+    border: 1.5px solid $color-border;
+    border-radius: $radius-md;
+    background: $color-bg-surface
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23555' d='M6 8L1 3h10z'/%3E%3C/svg%3E")
+      no-repeat right 12px center;
+    font-size: $font-size-base;
+    cursor: pointer;
+    appearance: none;
+    transition: border-color $transition-fast;
+
+    &:focus {
+      @include focus-ring;
+    }
+  }
+}

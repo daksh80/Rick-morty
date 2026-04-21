@@ -1,0 +1,13 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.filters {
+  @include surface($space-lg, $radius-lg, $shadow-sm);
+  @include flex($gap: $space-md);
+  flex-wrap: wrap;
+  margin-bottom: $space-2xl;
+
+  &__field {
+    flex: 1 1 200px;
+  }
+}

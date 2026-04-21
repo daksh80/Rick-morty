@@ -1,0 +1,37 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.error-boundary {
+  @include flex-center;
+  min-height: 60vh;
+  padding: $space-3xl $space-xl;
+
+  &__content {
+    @include surface($space-3xl, $radius-lg, $shadow-card);
+    max-width: 480px;
+    text-align: center;
+  }
+
+  &__icon {
+    font-size: 2.5rem;
+    color: $color-error;
+    display: block;
+    margin-bottom: $space-md;
+  }
+
+  &__title {
+    margin: 0 0 $space-sm;
+    font-size: 1.25rem;
+    color: $color-text-primary;
+  }
+
+  &__message {
+    margin: 0 0 $space-xl;
+    color: $color-text-muted;
+    font-size: $font-size-md;
+  }
+
+  &__action {
+    @include button-outlined($color-error);
+  }
+}

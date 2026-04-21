@@ -1,0 +1,17 @@
+{
+  "name": "Rick & Morty Characters",
+  "short_name": "R&M Characters",
+  "description": "Browse and filter Rick and Morty characters, even with flaky connectivity.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f5f6fa",
+  "theme_color": "#f5f6fa",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

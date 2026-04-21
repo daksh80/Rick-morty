@@ -1,0 +1,41 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.error-message {
+  @include flex($align: center, $gap: 10px);
+  background: $color-error-bg;
+  border: 1px solid $color-error-border;
+  border-radius: $radius-md;
+  padding: $space-md $space-lg;
+  margin: $space-lg 0;
+
+  &__icon {
+    font-size: 1.2rem;
+    color: $color-error;
+  }
+
+  &__text {
+    margin: 0;
+    color: $color-error-text;
+    font-size: $font-size-base;
+    flex: 1;
+  }
+
+  &__retry {
+    padding: $space-xs $space-md;
+    border: 1.5px solid $color-error;
+    border-radius: $radius-sm;
+    background: transparent;
+    color: $color-error-text;
+    font-size: $font-size-sm;
+    font-weight: 600;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background $transition-fast, color $transition-fast;
+
+    &:hover {
+      background: $color-error;
+      color: $color-bg-surface;
+    }
+  }
+}

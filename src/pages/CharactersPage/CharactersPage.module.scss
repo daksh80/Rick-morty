@@ -1,0 +1,26 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.characters-page {
+  max-width: $layout-max-width;
+  margin: 0 auto;
+  padding: $space-3xl $space-xl;
+
+  &__header {
+    margin-bottom: $space-2xl;
+  }
+
+  &__title {
+    margin: 0 0 $space-xs;
+    font-size: $font-size-xl;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: $color-text-primary;
+  }
+
+  &__subtitle {
+    margin: 0;
+    font-size: $font-size-md;
+    color: $color-text-muted;
+  }
+}

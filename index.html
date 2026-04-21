@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f5f6fa" />
+    <meta name="description" content="Browse all Rick and Morty characters — filter by name and status, paginate through the multiverse." />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <title>Rick &amp; Morty Characters</title>
+
+    <!-- Warm the API connection so DNS+TCP+TLS is done before the first request -->
+    <link rel="preconnect" href="https://rickandmortyapi.com" crossorigin />
+    <link rel="dns-prefetch" href="https://rickandmortyapi.com" />
+
+    <!--
+      Preload the LCP image (Rick Sanchez, character #1 — always the first card
+      on page 1 with no filters). Starts downloading at HTML parse time, in
+      parallel with the JS bundle and API fetch.
+    -->
+    <link rel="preload" as="image" href="https://rickandmortyapi.com/api/character/avatar/1.jpeg" fetchpriority="high" />
+
+    <!-- Minimal inline styles for the pre-JS paint — no animation, no repaints -->
+    <style>
+      html { background: #f5f6fa; }
+      body { margin: 0; font-family: system-ui, 'Segoe UI', Roboto, sans-serif; color: #333; -webkit-font-smoothing: antialiased; }
+      #root { min-height: 100vh; }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <!--
+      Kick off the first API request the moment the HTML is parsed — runs in
+      parallel with JS bundle download. React consumes this cached promise
+      instead of making a duplicate request.
+    -->
+    <script>
+      window.__rmPrefetch = fetch('https://rickandmortyapi.com/api/character?page=1')
+        .then(function(r) { return r.ok ? r.json() : null; })
+        .catch(function() { return null; });
+    </script>
+
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

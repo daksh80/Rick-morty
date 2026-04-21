@@ -1,0 +1,69 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.character {
+  @include flex($dir: column);
+  background: $color-bg-surface;
+  border-radius: $radius-lg;
+  overflow: hidden;
+  box-shadow: $shadow-card;
+  transition: transform $transition-fast, box-shadow $transition-fast;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: $shadow-hover;
+  }
+
+  &__image {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    display: block;
+  }
+
+  &__body {
+    @include flex($dir: column, $gap: $space-xs);
+    flex: 1;
+    padding: 14px $space-md 18px;
+  }
+
+  &__name {
+    @include truncate;
+    margin: 0;
+    font-size: $font-size-lg;
+    font-weight: 700;
+    line-height: 1.3;
+    color: $color-text-primary;
+  }
+
+  &__status {
+    @include flex($align: center, $gap: $space-xs);
+    font-size: $font-size-sm;
+    font-weight: 500;
+    color: $color-text-secondary;
+  }
+
+  &__dot {
+    width: 9px;
+    height: 9px;
+    border-radius: $radius-full;
+    background-color: var(--status-color);
+    flex-shrink: 0;
+  }
+
+  &__location {
+    @include flex($dir: column);
+    gap: 1px;
+    margin: $space-xxs 0 0;
+    font-size: $font-size-sm;
+    color: $color-text-muted;
+  }
+
+  &__location-label {
+    font-size: $font-size-xs;
+    font-weight: 600;
+    color: $color-text-label;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+}

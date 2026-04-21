@@ -1,0 +1,19 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.pagination {
+  @include flex($align: center, $justify: center, $gap: $space-lg);
+  margin-top: 36px;
+  padding: 12px 0 $space-xl;
+
+  &__btn {
+    @include button-outlined($color-primary);
+  }
+
+  &__info {
+    font-size: $font-size-md;
+    color: $color-text-secondary;
+    min-width: 120px;
+    text-align: center;
+  }
+}
