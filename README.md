@@ -1,4 +1,4 @@
-# Rick and Morty Characters (React Assignment)
+# Rick and Morty Characters
 
 A React app that fetches and displays characters from the Rick and Morty API with filtering, pagination, loading states, retry handling, and lightweight performance optimizations.
 
